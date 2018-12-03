@@ -1,0 +1,113 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.sravanth.countries"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+
+    //support library
+    implementation 'com.google.android.material:material:1.1.0-alpha01'
+
+    //ButterKnife
+    implementation 'com.jakewharton:butterknife:9.0.0-rc1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
+
+    //Timber - Logging library
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+    // Rx
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.14'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+
+    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+
+
+
+    // lombok
+    compileOnly 'org.projectlombok:lombok:1.16.16'
+    annotationProcessor 'org.projectlombok:lombok:1.16.16'
+    compileOnly "javax.annotation:jsr250-api:1.0"
+
+    def room_version = "2.1.0-alpha02"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version" // use kapt for Kotlin
+
+    // optional - RxJava support for Room
+    implementation "androidx.room:room-rxjava2:$room_version"
+
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation "androidx.room:room-guava:$room_version"
+
+    // Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+
+    // streams
+    implementation "com.annimon:stream:1.1.9"
+
+    // dagger 2: dependency injection
+    implementation 'com.google.dagger:dagger:2.16'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
+    compileOnly "javax.annotation:jsr250-api:1.0"
+
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0'
+
+    // picasso
+    implementation "com.squareup.picasso:picasso:2.5.2"
+
+    implementation 'com.github.ar-android:AndroidSvgLoader:1.0.1'
+
+    // junit
+    testImplementation "junit:junit:4.12"
+
+    // mockito
+    testImplementation "org.mockito:mockito-core:2.11.0"
+
+    // assertj-android and modules
+    testImplementation("com.squareup.assertj:assertj-android:1.1.1") {
+        exclude group: "com.android.support", module: "support-annotations"
+    }
+    def versionAssertj = "1.1.1"
+    testImplementation "com.squareup.assertj:assertj-android-support-v4:${versionAssertj}@aar"
+    testImplementation "com.squareup.assertj:assertj-android-design:${versionAssertj}@aar"
+    testImplementation "com.squareup.assertj:assertj-android-gridlayout-v7:${versionAssertj}@aar"
+    testImplementation "com.squareup.assertj:assertj-android-recyclerview-v7:${versionAssertj}@aar"
+
+
+
+    // mock web server
+    testImplementation "com.squareup.okhttp3:mockwebserver:3.8.1"
+}
